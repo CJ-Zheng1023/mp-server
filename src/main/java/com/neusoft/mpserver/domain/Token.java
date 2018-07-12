@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 /**
  * token映射实体类
+ * 可以使用驼峰式aaBb对应表中aa_bb
  * @name fandp
  * @email fandp@neusoft.com
  */
