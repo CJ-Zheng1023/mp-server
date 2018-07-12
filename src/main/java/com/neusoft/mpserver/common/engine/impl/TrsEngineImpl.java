@@ -4,6 +4,7 @@ import com.eprobiti.trs.TRSConnection;
 import com.eprobiti.trs.TRSConstant;
 import com.eprobiti.trs.TRSException;
 import com.eprobiti.trs.TRSResultSet;
+import com.neusoft.mpserver.common.Exception.SystemException;
 import com.neusoft.mpserver.common.domain.Condition;
 import com.neusoft.mpserver.common.domain.Pagination;
 import com.neusoft.mpserver.common.domain.Record;
@@ -51,7 +52,7 @@ public class TrsEngineImpl implements TrsEngine {
     }
 
     @Override
-    public TrsResult search(Condition condition) throws TRSException {
+    public TrsResult search(Condition condition) {
         TRSConnection conn = null;
         TrsResult rs = new TrsResult();
         try{
@@ -89,7 +90,7 @@ public class TrsEngineImpl implements TrsEngine {
                 }
             }
         }catch(Exception e){
-            throw new TRSException();
+            throw new SystemException();
         }finally {
             closeConnection(conn);
         }

@@ -15,5 +15,5 @@ public interface TrsEngine {
      * @param condition  检索条件
      * @return  TrsResult   检索结果
      */
-    TrsResult search(Condition condition) throws TRSException;
+    TrsResult search(Condition condition);
 }
