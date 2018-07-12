@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * token映射实体类
@@ -12,7 +13,8 @@ import javax.persistence.Id;
  */
 @Data
 @Entity
-public class Mp_Token {
+@Table(name="MP_TOKEN")
+public class Token {
     //id
     @Id
     private String id;

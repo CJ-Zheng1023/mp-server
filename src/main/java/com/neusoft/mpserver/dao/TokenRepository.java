@@ -1,7 +1,6 @@
 package com.neusoft.mpserver.dao;
 
-import com.neusoft.mpserver.domain.Mp_Token;
-import com.neusoft.mpserver.domain.Mp_User;
+import com.neusoft.mpserver.domain.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -9,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @name fandp
  * @email fandp@neusoft.com
  */
-public interface TokenRepository   extends JpaRepository<Mp_Token,String> {
+public interface TokenRepository   extends JpaRepository<Token,String> {
 
 }

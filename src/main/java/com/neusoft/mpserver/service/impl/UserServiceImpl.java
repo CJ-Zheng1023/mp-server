@@ -4,8 +4,8 @@ import com.neusoft.mpserver.common.util.IDGenerator;
 import com.neusoft.mpserver.dao.TokenRepository;
 import com.neusoft.mpserver.dao.UserRepository;
 import com.neusoft.mpserver.domain.Constant;
-import com.neusoft.mpserver.domain.Mp_Token;
-import com.neusoft.mpserver.domain.Mp_User;
+import com.neusoft.mpserver.domain.Token;
+import com.neusoft.mpserver.domain.User;
 import com.neusoft.mpserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     public String addUser(String username,String password) {
       System.out.println(userRepository.findByUsername(username).isEmpty());
       if(userRepository.findByUsername(username).isEmpty()){
-          Mp_User user=new Mp_User();
+          User user=new User();
           user.setUsername(username);
           user.setPassword(password);
           String userid= IDGenerator.generate();
@@ -71,14 +71,14 @@ public class UserServiceImpl implements UserService {
         }else{
             //登录成功
             map.put("code",Constant.getSuccessLogin());
-            Mp_User user=userRepository.findByUsernameAndPassword(username, password);
-            Mp_User loginUser=new Mp_User();
+            User user=userRepository.findByUsernameAndPassword(username, password);
+            User loginUser=new User();
             loginUser.setCreateTime(user.getCreateTime());
             loginUser.setId(user.getId());
             loginUser.setUsername(user.getUsername());
             map.put("user",loginUser);
             //token
-            Mp_Token token=new Mp_Token();
+            Token token=new Token();
             String tokenId=IDGenerator.generate();
             Date day=new Date();
             SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

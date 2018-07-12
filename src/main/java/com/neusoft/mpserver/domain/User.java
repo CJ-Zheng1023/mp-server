@@ -13,7 +13,8 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-public class Mp_User {
+@Table(name="MP_USER")
+public class User {
     //id
     @Id
     private String  id;
