@@ -16,4 +16,6 @@ public interface TrsEngine {
      * @return  TrsResult   检索结果
      */
     TrsResult search(Condition condition);
+
+
 }
