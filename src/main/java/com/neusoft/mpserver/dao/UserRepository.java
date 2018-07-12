@@ -3,6 +3,7 @@ package com.neusoft.mpserver.dao;
 import com.neusoft.mpserver.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ import java.util.List;
  * @name fandp
  * @email fandp@neusoft.com
  */
+@Transactional
 public interface UserRepository   extends JpaRepository<User,String> {
 
     public List<User> findByUsername(String username);

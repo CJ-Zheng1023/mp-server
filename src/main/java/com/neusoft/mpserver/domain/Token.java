@@ -17,11 +17,11 @@ import javax.persistence.Table;
 public class Token {
     //id
     @Id
-    private String id;
+    private String tokenId;
     //userid
-    private String user_id;
+    private String userId;
     //last_time
-    private String last_time;
+    private String lastTime;
 
 
 }

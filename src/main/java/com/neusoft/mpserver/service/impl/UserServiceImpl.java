@@ -17,44 +17,47 @@ import java.util.Map;
 
 /**
  * 用户模块service层实现
+ *
  * @name fandp
  * @email fandp@neusoft.com
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private Constant constant;
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private TokenRepository tokenRepository;
+
     /**
      * 注册逻辑
+     *
      * @param username
      * @param password
      * @return
      */
     @Override
-    public String addUser(String username,String password) {
-      System.out.println(userRepository.findByUsername(username).isEmpty());
-      if(userRepository.findByUsername(username).isEmpty()){
-          User user=new User();
-          user.setUsername(username);
-          user.setPassword(password);
-          String userid= IDGenerator.generate();
-          user.setId(userid);
-          Date day=new Date();
-          SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-          user.setCreateTime(df.format(day));
-          userRepository.save(user);
-          return Constant.getSuccessRegister();
-       }else{
-          return Constant.getFailRegister();
-      }
+    public String addUser(String username, String password) {
+        System.out.println(userRepository.findByUsername(username).isEmpty());
+        if (userRepository.findByUsername(username).isEmpty()) {
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+            String userid = IDGenerator.generate();
+            user.setId(userid);
+            Date day = new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            user.setCreateTime(df.format(day));
+            userRepository.save(user);
+            return Constant.SUCCESS_REGISTER;
+        } else {
+            return Constant.FAIL_REGISTER;
+        }
 
     }
 
     /**
      * 登录逻辑
+     *
      * @param username
      * @param password
      * @return
@@ -62,32 +65,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String, Object> login(String username, String password) {
         Map<String, Object> map = new HashMap<String, Object>();
-        if(userRepository.findByUsername(username).isEmpty()){
-            map.put("code", Constant.getNouserLogin());
+        if (userRepository.findByUsername(username).isEmpty()) {
+            map.put("code", Constant.NOUSER_LOGIN);
             return map;
-        }else if(userRepository.findByUsernameAndPassword(username, password)== null){
-            map.put("code",Constant.getFailpassLogin());
+        } else if (userRepository.findByUsernameAndPassword(username, password) == null) {
+            map.put("code", Constant.FAILPASS_LOGIN);
             return map;
-        }else{
+        } else {
             //登录成功
-            map.put("code",Constant.getSuccessLogin());
-            User user=userRepository.findByUsernameAndPassword(username, password);
-            User loginUser=new User();
+            map.put("code", Constant.SUCCESS_LOGIN);
+            User user = userRepository.findByUsernameAndPassword(username, password);
+            User loginUser = new User();
             loginUser.setCreateTime(user.getCreateTime());
             loginUser.setId(user.getId());
             loginUser.setUsername(user.getUsername());
-            map.put("user",loginUser);
+            map.put("user", loginUser);
             //token
-            Token token=new Token();
-            String tokenId=IDGenerator.generate();
-            Date day=new Date();
-            SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String lastTime=df.format(day);
-            token.setId(tokenId);
-            token.setLast_time(lastTime);
-            token.setUser_id(user.getId());
-            tokenRepository.save(token);
-            map.put("token",token);
+            Token token = new Token();
+            String tokenId = IDGenerator.generate();
+            Date day = new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String lastTime = df.format(day);
+            token.setTokenId(tokenId);
+            token.setLastTime(lastTime);
+            token.setUserId(user.getId());
+            map.put("token", tokenRepository.save(token).getTokenId());
             return map;
         }
     }
