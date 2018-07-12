@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.neusoft.mpserver.dao.TokenRepository;
 import com.neusoft.mpserver.domain.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +19,14 @@ import java.util.Map;
 public class TokenInterceptor implements HandlerInterceptor{
     @Autowired
     private TokenRepository tokenRepository;
+    @Value("${system.params.env}")
+    private String env;
 
     @Override
     public boolean preHandle(HttpServletRequest servletRequest, HttpServletResponse servletResponse, Object handler) throws Exception {
+        if(env.equals("development")){
+            return true;
+        }
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String getToken = request.getParameter("token");
