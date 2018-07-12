@@ -16,7 +16,6 @@ public class Constant {
     public static final String SUCCESS_LOGIN = "1";
     //登录查询密码错误
     public static final String FAILPASS_LOGIN = "3";
-
     //当前还未登录
     public static final String NO_LOGIN = "1";
     //登录过期代码

@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private TokenRepository tokenRepository;
-
     /**
      * 注册逻辑
      *
@@ -37,7 +36,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public String addUser(String username, String password) {
-        System.out.println(userRepository.findByUsername(username).isEmpty());
         if (userRepository.findByUsername(username).isEmpty()) {
             User user = new User();
             user.setUsername(username);
@@ -52,7 +50,6 @@ public class UserServiceImpl implements UserService {
         } else {
             return Constant.FAIL_REGISTER;
         }
-
     }
 
     /**
