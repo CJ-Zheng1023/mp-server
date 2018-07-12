@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * user操作数据库层
+ * @name fandp
+ * @email fandp@neusoft.com
  */
 public interface UserRepository   extends JpaRepository<Mp_User,String> {
 

@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 /**
  * 用户domain对象
+ * @name fandp
+ * @email fandp@neusoft.com
  */
 @Data
 @Entity

@@ -4,6 +4,8 @@ import java.util.Map;
 
 /**
  * 用户模块service层接口
+ * @name fandp
+ * @email fandp@neusoft.com
  */
 public interface UserService {
    //用户注册

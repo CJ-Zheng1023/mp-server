@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 /**
  * token映射实体类
+ * @name fandp
+ * @email fandp@neusoft.com
  */
 @Data
 @Entity
