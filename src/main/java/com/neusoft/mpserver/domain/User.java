@@ -8,10 +8,13 @@ import javax.persistence.Table;
 
 /**
  * 用户domain对象
+ * @name fandp
+ * @email fandp@neusoft.com
  */
 @Data
 @Entity
-public class Mp_User {
+@Table(name="MP_USER")
+public class User {
     //id
     @Id
     private String  id;

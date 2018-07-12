@@ -4,14 +4,13 @@ import com.neusoft.mpserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  *   用户模块
- *   @name
- *   @email
+ * @name fandp
+ * @email fandp@neusoft.com
  */
 @RestController
 @RequestMapping("/user")
