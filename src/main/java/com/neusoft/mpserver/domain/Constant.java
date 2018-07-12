@@ -22,4 +22,8 @@ public class Constant {
     //登录过期代码
     public static final String EXPIRED_LOGIN = "2";
 
+    public static final String PATENT_LIST_DISPLAY_FIELDS = "NRD_AN,TI";
+
+    public static final String CNABS_DB = "CNABS";
+
 }
