@@ -1,13 +1,10 @@
 package com.neusoft.mpserver.common.configure;
-
 import com.neusoft.mpserver.common.interceptor.OriginTnterceptor;
 import com.neusoft.mpserver.common.interceptor.TokenInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
