@@ -22,7 +22,7 @@ public class Constant {
     public static final String EXPIRED_LOGIN = "2";
 
     //根据ic查询中文英文解释码值
-    public static final String PATENT_LIST_DISPLAY_FIELDS_CHEN="NRD_AN,TI";
+    public static final String IPC_FIELDS="IC,UTCN,UTEN";
 
     public static final String CNABS_DB = "CNABS";
     /*********** zhengchj ***********/
@@ -33,6 +33,7 @@ public class Constant {
     public static final String SQ_PREFIX = "SQ_";
     public static final String MAIN_FIELDS = "PA,IN,TI";
     public static final String OTHER_FIELDS = "NRD_AN,CCODE,CNAME";
+    public static final String IPC_DB = "IPC8";
     /************ fandp ****************/
     public static final String USER_ID="user_id";
 }

@@ -68,20 +68,19 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public Map<String, Object> searchIpc(String ipc) {
-        Map<String,Object> mapChEn =new HashMap<String, Object>();
+    public Map<String, String> searchIpc(String ipc) {
+        Map<String,String> ipcResult =new HashMap<String, String>();
         Condition condition = new Condition();
-        String searchIc = "IC='" + ipc + "'";    //?
+        String searchIc = "IC='" + ipc + "'";
         condition.setExp(searchIc);
-        condition.setDbName(Constant.CNABS_DB);   //?
-        condition.setDisplayFields(Constant.PATENT_LIST_DISPLAY_FIELDS_CHEN);  //?
+        condition.setDbName(Constant.IPC_DB);
+        condition.setDisplayFields(Constant.IPC_FIELDS);
         TrsResult tr=trsEngine.search(condition);
         List<Record> recordList=tr.getRecords();
         List<Map<String,String>>  ipcChEn=new ArrayList<Map<String, String>>();
-        for (int i = 0; i < recordList.size(); i++) {
-            ipcChEn.add(recordList.get(i).getDataMap());
+        for (int i = 0; i < 1; i++) {
+            ipcResult = recordList.get(i).getDataMap();
         }
-        mapChEn.put("ipcResult",ipcChEn);
-        return mapChEn;
+        return ipcResult;
     }
 }
