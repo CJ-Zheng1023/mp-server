@@ -40,7 +40,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             response.getWriter().write(resultStr);
             return false;
         } else {
-            request.setAttribute("userId", tokenDomain.getUserId());
+            request.setAttribute(Constant.USER_ID, tokenDomain.getUserId());
             //token没有过期放行
             return true;
         }

@@ -9,6 +9,8 @@ import com.neusoft.mpserver.domain.User;
 import com.neusoft.mpserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class UserServiceImpl implements UserService {
      * @param password
      * @return
      */
+    @Transactional
     @Override
     public String addUser(String username, String password) {
         if (userRepository.findByUsername(username).isEmpty()) {
@@ -58,6 +61,7 @@ public class UserServiceImpl implements UserService {
      * @param password
      * @return
      */
+    @Transactional
     @Override
     public Map<String, Object> login(String username, String password) {
         Map<String, Object> map = new HashMap<String, Object>();

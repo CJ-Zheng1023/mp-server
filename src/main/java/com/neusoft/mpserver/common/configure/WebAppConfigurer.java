@@ -19,8 +19,8 @@ public class WebAppConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         List<String> urls = new ArrayList<String>();
-        urls.add("/mark/*");
-        urls.add("/search/*");
+        urls.add("/mark/**");
+        urls.add("/search/**");
         registry.addInterceptor(getTokenInterceptor()).addPathPatterns(urls);
     }
 }

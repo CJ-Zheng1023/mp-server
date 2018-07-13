@@ -11,7 +11,6 @@ import java.util.List;
  * @name fandp
  * @email fandp@neusoft.com
  */
-@Transactional
 public interface UserRepository   extends JpaRepository<User,String> {
 
     public List<User> findByUsername(String username);

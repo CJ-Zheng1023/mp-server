@@ -34,4 +34,5 @@ public class Constant {
     public static final String MAIN_FIELDS = "PA,IN,TI";
     public static final String OTHER_FIELDS = "NRD_AN,CCODE,CNAME";
     /************ fandp ****************/
+    public static final String USER_ID="user_id";
 }

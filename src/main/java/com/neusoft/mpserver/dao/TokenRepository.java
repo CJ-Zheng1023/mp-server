@@ -13,7 +13,7 @@ import java.util.List;
  * @name fandp
  * @email fandp@neusoft.com
  */
-@Transactional
+
 public interface TokenRepository   extends JpaRepository<Token,String> {
     public Token findByTokenId(String tokenId);
 }

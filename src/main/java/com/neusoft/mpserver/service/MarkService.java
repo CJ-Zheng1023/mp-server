@@ -13,7 +13,7 @@ public interface MarkService {
     //保存标引词
      public boolean addMark(String userid,List<Mark> markList);
     //删除标引词
-     public boolean deleteMark (String markId);
+     public boolean deleteMark (String markId,String userId);
      //查询标引词
      public List<Mark> showMarkList(String userid,String an);
 }

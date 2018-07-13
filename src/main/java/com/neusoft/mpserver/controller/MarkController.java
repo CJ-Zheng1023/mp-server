@@ -1,5 +1,6 @@
 package com.neusoft.mpserver.controller;
 
+import com.neusoft.mpserver.domain.Constant;
 import com.neusoft.mpserver.domain.Mark;
 import com.neusoft.mpserver.service.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +22,23 @@ public class MarkController {
 
     //保存标引词
     @PostMapping("/add")
-    public  boolean addMark(String token, List<Mark> markList, HttpServletRequest request){
+    public  boolean addMark(List<Mark> markList, HttpServletRequest request){
         String userId = (String) request.getAttribute("userId");
         return markService.addMark(userId,markList);
     }
 
     //删除标引词
     @PostMapping("/delete")
-    public boolean  deleteMark(String markId, String token){
-          return markService.deleteMark(markId);
+    public boolean  deleteMark(String markId,HttpServletRequest request){
+        String userId = (String) request.getAttribute("userId");
+          return markService.deleteMark(markId,userId);
     }
 
     //显示标引词
-     @RequestMapping(value="/list/:{token}/:{an}",method = RequestMethod.GET)
-     public  List<Mark> markList (String an,String token,HttpServletRequest request){
-         String userid=request.getParameter("userId");
-        return markService.showMarkList(userid,an);
+    @GetMapping("/list/{an}")
+     public  List<Mark> markList (@PathVariable String an,HttpServletRequest request){
+         String userId = (String) request.getAttribute(Constant.USER_ID);
+          return markService.showMarkList(userId,an);
      }
 
 }
