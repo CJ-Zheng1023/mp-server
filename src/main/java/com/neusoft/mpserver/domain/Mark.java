@@ -1,7 +1,5 @@
 package com.neusoft.mpserver.domain;
-
 import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,6 +17,7 @@ public class Mark {
     @Id
     private String id;
     //类型：共四种类型，标题,发明人，申请人，国省代码
+    //1:标题 2：发明人 3：申请人 4：国省代码
     private String type;
     //用户id
     private String userId;
