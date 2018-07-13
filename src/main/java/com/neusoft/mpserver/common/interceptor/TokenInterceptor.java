@@ -24,16 +24,14 @@ public class TokenInterceptor implements HandlerInterceptor{
     private String env;
 
     @Override
-    public boolean preHandle(HttpServletRequest servletRequest, HttpServletResponse servletResponse, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if(env.equals("development")){
             return true;
         }
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
         String token = request.getParameter("token");
         Token tokenDomain=tokenRepository.findByTokenId(token);
         if (tokenDomain == null) {
-            Map<String,String> map=new HashMap<>();
+            Map<String,String> map=new HashMap<String, String>();
             map.put("error",Constant.NO_LOGIN);
             Gson gson = new Gson();
             String resultStr = gson.toJson(map);

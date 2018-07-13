@@ -15,49 +15,49 @@ import java.util.List;
 /**
  * 标引词模块：service层实现
  * 只有在这一层加事务管理才是真正的事务管理
+ *
  * @name fandp
  * @email fandp@neusoft.com
  */
 @Service
-public class MarkServiceImpl implements MarkService{
+public class MarkServiceImpl implements MarkService {
     @Autowired
     private MarkRerpository markRerpository;
+
     //保存标引词方法
     @Override
     @Transactional
-    public boolean addMark(String userid,List<Mark> markList) {
-        List<Mark> markListResult=markList;
-        for(int i=0;i<markListResult.size();i++){
-            markListResult.get(i).setUserId(userid);
+    public boolean addMark(String userId, List<Mark> markList) {
+        List<Mark> markListResult = markList;
+        for (int i = 0; i < markListResult.size(); i++) {
+            markListResult.get(i).setUserId(userId);
             markListResult.get(i).setId(IDGenerator.generate());
             Date day = new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             markListResult.get(i).setCreateTime(df.format(day));
         }
-       if(markRerpository.saveAll(markListResult)==null){
+        if (markRerpository.saveAll(markListResult).isEmpty()) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
+
     //删除标引词方法
     @Transactional
     @Override
-    public boolean deleteMark(String markId,String userId) {
-        markRerpository.deleteMarkByIdAndUserId(markId,userId);
+    public boolean deleteMark(String markId, String userId) {
+        markRerpository.deleteMarkByIdAndUserId(markId, userId);
         return true;
     }
 
     //查询标引词
     @Transactional
     @Override
-    public List<Mark> showMarkList(String userid,String an){
-        List<Mark> markList= markRerpository.findByUserIdAndAn(userid,an);
+    public List<Mark> showMarkList(String userId, String an) {
+        List<Mark> markList = markRerpository.findByUserIdAndAn(userId, an);
         return markList;
     }
-
-
-
 
 
 }
