@@ -28,7 +28,7 @@ public class WebAppConfigurer implements WebMvcConfigurer {
         urls.add("/mark/**");
         urls.add("/search/**");
         registry.addInterceptor(getTokenInterceptor()).addPathPatterns(urls);
-        //跨域
+        //跨域拦截
         List<String> orinigUrls=new ArrayList<String>();
         orinigUrls.add("/mark/**");
         orinigUrls.add("/search/**");
