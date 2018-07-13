@@ -1,5 +1,4 @@
 package com.neusoft.mpserver.domain;
-
 import lombok.Data;
 
 @Data
