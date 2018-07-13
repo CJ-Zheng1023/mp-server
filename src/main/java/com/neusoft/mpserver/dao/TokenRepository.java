@@ -1,13 +1,6 @@
 package com.neusoft.mpserver.dao;
-
 import com.neusoft.mpserver.domain.Token;
-import com.neusoft.mpserver.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import javax.transaction.Transactional;
-import java.util.List;
-
-
 /**
  * token 操作数据库层
  * @name fandp

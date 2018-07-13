@@ -1,14 +1,9 @@
 package com.neusoft.mpserver.dao;
 import com.neusoft.mpserver.domain.Mark;
-import com.neusoft.mpserver.domain.Token;
-import com.neusoft.mpserver.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-
-import javax.transaction.Transactional;
 import java.util.List;
-
 /**
  * mark操作数据库层
  * @Query注解查询适用于所查询的数据无法通过关键字查询得到结果的查询。这种查询可以摆脱像关键字查询那样的约束，将查询直接在相应的接口方法中声明，结构更为清晰，这是Spring Data的特有实现。
