@@ -78,6 +78,10 @@ public class SearchServiceImpl implements SearchService {
         TrsResult tr=trsEngine.search(condition);
         List<Record> recordList=tr.getRecords();
         List<Map<String,String>>  ipcChEn=new ArrayList<Map<String, String>>();
+        if(recordList.size() == 0){
+            ipcResult.put("code", Constant.NO_IPC);
+            return ipcResult;
+        }
         for (int i = 0; i < 1; i++) {
             ipcResult = recordList.get(i).getDataMap();
         }

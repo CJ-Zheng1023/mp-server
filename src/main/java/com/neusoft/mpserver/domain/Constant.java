@@ -36,4 +36,5 @@ public class Constant {
     public static final String IPC_DB = "IPC8";
     /************ fandp ****************/
     public static final String USER_ID="user_id";
+    public static final String NO_IPC = "0";
 }
