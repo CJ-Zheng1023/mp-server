@@ -32,11 +32,5 @@ public class SearchController {
         return ipcMap;
     }
 
-    //查询案卷的标题，申请人，发明人，国省代码
-    @PostMapping("/patent")
-    public Map<String,Object> searchPatent(String an,String token){
-          Map<String,Object> ipcPatentDetail=searchService.searchPatent(an);
-          return ipcPatentDetail;
-    }
 
 }

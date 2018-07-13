@@ -20,18 +20,18 @@ public class Constant {
     public static final String NO_LOGIN = "1";
     //登录过期代码
     public static final String EXPIRED_LOGIN = "2";
-    //test
-    public static final String PATENT_LIST_DISPLAY_FIELDS = "NRD_AN,TI";
-    //根据Ic查询案卷an,ti码值
-    public static final String PATENT_LIST_DISPLAY_FIELDS_PATENT = "NRD_AN,TI";
+
     //根据ic查询中文英文解释码值
     public static final String PATENT_LIST_DISPLAY_FIELDS_CHEN="NRD_AN,TI";
-    //根据an查询案卷标题、申请人、发明人、国省代码
-    public static final String PATENT_LIST_DISPLAY_FIELDS_DETAIL="NRD_AN,TI";
 
     public static final String CNABS_DB = "CNABS";
     /*********** zhengchj ***********/
-
+    public static final String GK_PN = "GK_PN";
+    public static final String GK_FIELDS = "GK_PA,GK_IN,GK_TI";
+    public static final String SQ_FIELDS = "SQ_PA,SQ_IN,SQ_TI";
+    public static final String GK_PREFIX = "GK_";
+    public static final String SQ_PREFIX = "SQ_";
+    public static final String MAIN_FIELDS = "PA,IN,TI";
+    public static final String OTHER_FIELDS = "NRD_AN,CCODE,CNAME";
     /************ fandp ****************/
-
 }
