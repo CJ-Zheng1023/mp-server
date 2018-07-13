@@ -24,6 +24,13 @@ import javax.persistence.Table;
  @GeneratedValue注释定义了标识字段生成方式。
  @Temporal注释用来指定java.util.Date或java.util.Calender属性与数据库类型date、time或timestamp中的那一种类型进行映射。
  @Temporal(value=TemporalType.TIME)
+
+ 映射规则：
+ 1. 实体类必须用 @javax.persistence.Entity 进行注解；
+ 2. 必须使用 @javax.persistence.Id 来注解一个主键；
+ 3. 实体类必须拥有一个 public 或者 protected 的无参构造函数，之外实体类还可以拥有其他的构造函数；
+ 4. 实体类必须是一个顶级类（top-level class）。一个枚举（enum）或者一个接口（interface）不能被注解为一个实体；
+ 5. 实体类不能是 final 类型的，也不能有 final 类型的方法；
  */
 
 /**
