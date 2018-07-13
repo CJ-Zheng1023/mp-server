@@ -26,4 +26,6 @@ public class TrsResult implements Serializable {
      * 数据集合
      */
     List<Record> records = new ArrayList<Record>();
+
+
 }

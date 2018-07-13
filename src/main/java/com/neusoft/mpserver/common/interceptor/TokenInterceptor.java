@@ -3,6 +3,7 @@ package com.neusoft.mpserver.common.interceptor;
 import com.google.gson.Gson;
 import com.neusoft.mpserver.dao.TokenRepository;
 import com.neusoft.mpserver.domain.Constant;
+import com.neusoft.mpserver.domain.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -29,8 +30,9 @@ public class TokenInterceptor implements HandlerInterceptor{
         }
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String getToken = request.getParameter("token");
-        if (tokenRepository.findByTokenId(getToken) == null) {
+        String token = request.getParameter("token");
+        Token tokenDomain=tokenRepository.findByTokenId(token);
+        if (tokenDomain == null) {
             Map<String,String> map=new HashMap<>();
             map.put("error",Constant.NO_LOGIN);
             Gson gson = new Gson();
@@ -38,6 +40,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             response.getWriter().write(resultStr);
             return false;
         } else {
+            request.setAttribute("userId", tokenDomain.getUserId());
             //token没有过期放行
             return true;
         }
