@@ -20,7 +20,6 @@ import java.util.List;
  * @name fandp
  * @email fandp@neusoft.com
  */
-
 public interface MarkRerpository  extends JpaRepository<Mark,String> {
 
     public List<Mark> findByUserIdAndAn(String userid, String an);
