@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
             User user = new User();
             user.setUsername(username);
             user.setPassword(password);
-            String userid = IDGenerator.generate();
-            user.setId(userid);
+            String userId = IDGenerator.generate();
+            user.setId(userId);
             Date day = new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             user.setCreateTime(df.format(day));
