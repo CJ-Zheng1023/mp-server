@@ -31,6 +31,7 @@ import javax.persistence.Table;
  3. 实体类必须拥有一个 public 或者 protected 的无参构造函数，之外实体类还可以拥有其他的构造函数；
  4. 实体类必须是一个顶级类（top-level class）。一个枚举（enum）或者一个接口（interface）不能被注解为一个实体；
  5. 实体类不能是 final 类型的，也不能有 final 类型的方法；
+ 6. 如果实体类的一个实例需要用传值的方式调用（例如，远程调用），则这个实体类必须实现（implements）java.io.Serializable 接口。
  */
 
 /**
