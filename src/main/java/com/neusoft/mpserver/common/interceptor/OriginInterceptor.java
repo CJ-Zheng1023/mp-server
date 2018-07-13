@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
  * @name fandp
  * @email fandp@neusoft.om
  */
-public class OriginTnterceptor  implements HandlerInterceptor {
+public class OriginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         return true;

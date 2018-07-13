@@ -1,5 +1,5 @@
 package com.neusoft.mpserver.common.configure;
-import com.neusoft.mpserver.common.interceptor.OriginTnterceptor;
+import com.neusoft.mpserver.common.interceptor.OriginInterceptor;
 import com.neusoft.mpserver.common.interceptor.TokenInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +15,8 @@ public class WebAppConfigurer implements WebMvcConfigurer {
         return new TokenInterceptor();
     }
     @Bean
-    public OriginTnterceptor getOriginTnterceptor(){
-        return new OriginTnterceptor();
+    public OriginInterceptor getOriginInterceptor(){
+        return new OriginInterceptor();
     }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -30,6 +30,6 @@ public class WebAppConfigurer implements WebMvcConfigurer {
         orinigUrls.add("/mark/**");
         orinigUrls.add("/search/**");
         orinigUrls.add("/user/**");
-        registry.addInterceptor(getOriginTnterceptor()).addPathPatterns(orinigUrls);
+        registry.addInterceptor(getOriginInterceptor()).addPathPatterns(orinigUrls);
     }
 }
