@@ -30,5 +30,8 @@ public class Constant {
     public static final String PATENT_LIST_DISPLAY_FIELDS_DETAIL="NRD_AN,TI";
 
     public static final String CNABS_DB = "CNABS";
+    /*********** zhengchj ***********/
+
+    /************ fandp ****************/
 
 }
