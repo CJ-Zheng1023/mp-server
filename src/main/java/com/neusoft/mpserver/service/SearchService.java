@@ -13,6 +13,6 @@ public interface SearchService {
     public Map<String,Object> searchPatentList(String ipc, Pagination pagination);
 
     //查询中英文解释
-    public Map<String,Object> searchIpc(String ipc);
+    public Map<String,String> searchIpc(String ipc);
 
 }

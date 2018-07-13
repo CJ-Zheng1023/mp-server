@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Map;
 
 /**
- *  查询ic下案卷模块
+ * 查询ic下案卷模块
+ *
  * @name fandp
  * @email fandp@neusoft.com
  */
@@ -17,19 +19,20 @@ import java.util.Map;
 @RequestMapping("/search")
 public class SearchController {
     @Autowired
-   private SearchService searchService;
+    private SearchService searchService;
 
     //查询案卷列表
     @PostMapping("/patent/list")
-    public Map<String, Object> searchPatentList (String ipc, Pagination pagination , String token){
-        Map<String, Object> patentMap=searchService.searchPatentList(ipc,pagination);
+    public Map<String, Object> searchPatentList(String ipc, Pagination pagination, String token) {
+        Map<String, Object> patentMap = searchService.searchPatentList(ipc, pagination);
         return patentMap;
     }
+
     //查询中英文解释
     @PostMapping("/ipc")
-    public Map<String,Object> searchIpc(String ipc,String token){
-        Map<String,Object>  ipcMap=searchService.searchIpc(ipc);
-        return ipcMap;
+    public Map<String, String> searchIpc(String ipc, String token) {
+        Map<String, String> ipcResult = searchService.searchIpc(ipc);
+        return ipcResult;
     }
 
 

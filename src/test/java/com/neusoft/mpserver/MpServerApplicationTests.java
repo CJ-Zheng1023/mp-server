@@ -17,10 +17,15 @@ public class MpServerApplicationTests {
 	@Autowired
 	private SearchService searchService;
 	@Test
-	public void searchServiceSearchPatentListTest() throws TRSException {
+	public void searchPatentListTest() throws TRSException {
 		Pagination pagination = new Pagination();
         pagination.setSize(3);
 		Map<String, Object> map = searchService.searchPatentList("G21F5/015", pagination);
 		System.out.println(map);
+	}
+	@Test
+	public void searchIpcTest() {
+		Map<String, String> ipcResult = searchService.searchIpc("G21F5/015");
+		System.out.println(ipcResult);
 	}
 }
