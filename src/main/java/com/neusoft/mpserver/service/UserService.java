@@ -12,5 +12,6 @@ public interface UserService {
     public String addUser(String username,String password);
     //用户登录
     public Map<String ,Object> login (String username,String password);
-
+    //用户退出
+    public  boolean logout(String userId);
 }

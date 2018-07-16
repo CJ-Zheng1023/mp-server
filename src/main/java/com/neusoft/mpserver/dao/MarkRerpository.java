@@ -17,10 +17,10 @@ import java.util.List;
  */
 public interface MarkRerpository  extends JpaRepository<Mark,String> {
 
-    public List<Mark> findByUserIdAndAn(String userid, String an);
+    public List<Mark> findByAn(String an);
 
     //自定义sql查询
     @Modifying
     @Query(value="delete from Mark where id=?1 and userId=?2")
-    public void  deleteMarkByIdAndUserId(String id,String userId);
+    public boolean  deleteMarkByIdAndUserId(String id,String userId);
 }

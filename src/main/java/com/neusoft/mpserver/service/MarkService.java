@@ -18,5 +18,5 @@ public interface MarkService {
     public boolean deleteMark(String markId, String userId);
 
     //查询标引词
-    public List<Mark> showMarkList(String userId, String an);
+    public List<Mark> showMarkList(String an);
 }

@@ -47,15 +47,18 @@ public class MarkServiceImpl implements MarkService {
     @Transactional
     @Override
     public boolean deleteMark(String markId, String userId) {
-        markRerpository.deleteMarkByIdAndUserId(markId, userId);
-        return true;
+        if(markRerpository.deleteMarkByIdAndUserId(markId, userId)==true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //查询标引词
     @Transactional
     @Override
-    public List<Mark> showMarkList(String userId, String an) {
-        List<Mark> markList = markRerpository.findByUserIdAndAn(userId, an);
+    public List<Mark> showMarkList(String an) {
+        List<Mark> markList = markRerpository.findByAn(an);
         return markList;
     }
 

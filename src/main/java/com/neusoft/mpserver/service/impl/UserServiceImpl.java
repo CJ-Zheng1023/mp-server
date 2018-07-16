@@ -93,4 +93,19 @@ public class UserServiceImpl implements UserService {
             return map;
         }
     }
+
+    /**
+     * 退出逻辑
+     * @param userId
+     * @return
+     */
+    @Transactional
+    @Override
+    public boolean logout(String userId) {
+       if(tokenRepository.deleteByUserId(userId) ==true){
+           return true;
+       }else{
+           return false;
+       }
+    }
 }

@@ -34,11 +34,10 @@ public class MarkController {
           return markService.deleteMark(markId,userId);
     }
 
-    //显示标引词
+    //查询显示标引词
     @GetMapping("/list/{an}")
-     public  List<Mark> markList (@PathVariable String an,HttpServletRequest request){
-         String userId = (String) request.getAttribute(Constant.USER_ID);
-          return markService.showMarkList(userId,an);
+     public  List<Mark> markList (@PathVariable String an){
+          return markService.showMarkList(an);
      }
 
 }
