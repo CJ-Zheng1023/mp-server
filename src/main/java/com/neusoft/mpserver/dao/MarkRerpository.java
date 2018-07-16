@@ -22,5 +22,5 @@ public interface MarkRerpository  extends JpaRepository<Mark,String> {
     //自定义sql查询
     @Modifying
     @Query(value="delete from Mark where id=?1 and userId=?2")
-    public boolean  deleteMarkByIdAndUserId(String id,String userId);
+    public void  deleteMarkByIdAndUserId(String id,String userId);
 }

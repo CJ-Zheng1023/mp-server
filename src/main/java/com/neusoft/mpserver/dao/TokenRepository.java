@@ -15,7 +15,7 @@ public interface TokenRepository   extends JpaRepository<Token,String> {
     //退出功能
     @Modifying
     @Query(value="delete from Token where userId=?1")
-    public boolean  deleteByUserId(String userId);
+    public void  deleteByUserId(String userId);
 
 
 

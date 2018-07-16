@@ -47,11 +47,8 @@ public class MarkServiceImpl implements MarkService {
     @Transactional
     @Override
     public boolean deleteMark(String markId, String userId) {
-        if(markRerpository.deleteMarkByIdAndUserId(markId, userId)==true){
-            return true;
-        }else{
-            return false;
-        }
+        markRerpository.deleteMarkByIdAndUserId(markId, userId);
+        return true;
     }
 
     //查询标引词

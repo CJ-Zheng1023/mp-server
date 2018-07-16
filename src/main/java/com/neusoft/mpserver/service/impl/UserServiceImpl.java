@@ -103,10 +103,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public boolean logout(String userId) {
-       if(tokenRepository.deleteByUserId(userId) ==true){
-           return true;
-       }else{
-           return false;
-       }
+      tokenRepository.deleteByUserId(userId);
+      return true;
     }
 }
