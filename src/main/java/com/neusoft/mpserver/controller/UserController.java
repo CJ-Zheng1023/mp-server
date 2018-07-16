@@ -2,6 +2,7 @@ package com.neusoft.mpserver.controller;
 
 import com.neusoft.mpserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
@@ -23,12 +25,12 @@ public class UserController {
     /**
      * 注册
      *
-     * @param username
-     * @param password
      * @return
      */
     @PostMapping("/add")
-    public String addUser(String username, String password) {
+    public Map<String, String> addUser(@RequestBody Map postMap) {
+        String username = (String) postMap.get("username");
+        String password = (String) postMap.get("password");
         return userService.addUser(username, password);
     }
 

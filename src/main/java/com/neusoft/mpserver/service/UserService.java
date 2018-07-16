@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public interface UserService {
    //用户注册
-    public String addUser(String username,String password);
+    public Map<String, String> addUser(String username,String password);
     //用户登录
     public Map<String ,Object> login (String username,String password);
     //用户退出

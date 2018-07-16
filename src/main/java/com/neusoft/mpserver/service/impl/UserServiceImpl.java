@@ -37,7 +37,8 @@ public class UserServiceImpl implements UserService {
      */
     @Transactional
     @Override
-    public String addUser(String username, String password) {
+    public Map<String, String> addUser(String username, String password) {
+        Map<String, String> map =new HashMap<String, String>();
         if (userRepository.findByUsername(username).isEmpty()) {
             User user = new User();
             user.setUsername(username);
@@ -48,10 +49,11 @@ public class UserServiceImpl implements UserService {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             user.setCreateTime(df.format(day));
             userRepository.save(user);
-            return Constant.SUCCESS_REGISTER;
+            map.put("code", Constant.SUCCESS_REGISTER);
         } else {
-            return Constant.FAIL_REGISTER;
+            map.put("code", Constant.FAIL_REGISTER);
         }
+        return map;
     }
 
     /**

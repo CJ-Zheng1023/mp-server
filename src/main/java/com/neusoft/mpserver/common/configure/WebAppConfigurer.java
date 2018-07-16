@@ -20,13 +20,6 @@ public class WebAppConfigurer implements WebMvcConfigurer {
         return new OriginInterceptor();
     }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080")
-                .allowedMethods("GET", "POST")
-                .allowCredentials(false).maxAge(3600);
-    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

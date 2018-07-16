@@ -28,8 +28,8 @@ public class TokenInterceptor implements HandlerInterceptor{
         if(env.equals("development")){
             return true;
         }
-        String token=request.getHeader("token");
-      //  String token = request.getParameter("token");
+        //String token=request.getHeader("token");
+        String token = request.getParameter("token");
         Token tokenDomain=tokenRepository.findByTokenId(token);
         if (tokenDomain == null) {
             Map<String,String> map=new HashMap<String, String>();

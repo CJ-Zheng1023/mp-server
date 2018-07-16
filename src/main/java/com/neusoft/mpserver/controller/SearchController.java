@@ -5,6 +5,7 @@ import com.neusoft.mpserver.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,6 +16,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/search")
+@CrossOrigin
 public class SearchController {
     @Autowired
     private SearchService searchService;
@@ -22,15 +24,17 @@ public class SearchController {
     //查询案卷列表
     @GetMapping("/patent/list/{ipc}")
     public Map<String, Object> searchPatentList(@PathVariable String ipc, Pagination pagination, String token) {
-        Map<String, Object> patentMap = searchService.searchPatentList(ipc, pagination);
+        Map<String, Object> patentMap = searchService.searchPatentList(ipc.replaceAll("-", "/"), pagination);
         return patentMap;
     }
 
     //查询中英文解释
     @GetMapping("/ipc/{ipc}")
-    public Map<String, String> searchIpc(@PathVariable String ipc, String token) {
-        Map<String, String> ipcResult = searchService.searchIpc(ipc);
-        return ipcResult;
+    public Map<String, Map<String, String>> searchIpc(@PathVariable String ipc, String token) {
+        Map<String, String> ipcResult = searchService.searchIpc(ipc.replaceAll("-", "/"));
+        Map<String, Map<String, String>> result = new HashMap<String, Map<String, String>>();
+        result.put("ipcResult", ipcResult);
+        return result;
     }
 
 
