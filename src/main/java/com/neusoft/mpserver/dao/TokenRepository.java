@@ -17,4 +17,7 @@ public interface TokenRepository   extends JpaRepository<Token,String> {
     @Query(value="delete from Token where userId=?1")
     public boolean  deleteByUserId(String userId);
 
+    //再次登录时，若token表存在此用户的token，删除。（删除前先查找）
+    public Token findByUserId(String userId);
+
 }
