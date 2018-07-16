@@ -2,9 +2,7 @@ package com.neusoft.mpserver.controller;
 
 import com.neusoft.mpserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
