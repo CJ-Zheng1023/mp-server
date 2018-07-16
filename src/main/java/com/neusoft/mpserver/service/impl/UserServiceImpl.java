@@ -81,9 +81,7 @@ public class UserServiceImpl implements UserService {
             loginUser.setUsername(user.getUsername());
             map.put("user", loginUser);
             //token
-            if(tokenRepository.findByUserId(user.getId()) !=null){
-                tokenRepository.deleteByUserId(user.getId());
-            }
+            tokenRepository.deleteByUserId(user.getId());
             Token token = new Token();
             String tokenId = IDGenerator.generate();
             Date day = new Date();
