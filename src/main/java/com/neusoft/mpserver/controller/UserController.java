@@ -31,12 +31,13 @@ public class UserController {
 
     /**
      * 登录
-     * @param username
-     * @param password
+     * @param
      * @return
      */
     @PostMapping("/login")
-    public Map<String, Object> login(String username, String password){
+    public Map<String, Object> login(@RequestBody Map dataMap){
+        String username=(String )dataMap.get("username");
+        String password=(String)dataMap.get("password");
         Map<String, Object> map = new HashMap<String, Object>();
         map=userService.login(username,password);
         return map;
