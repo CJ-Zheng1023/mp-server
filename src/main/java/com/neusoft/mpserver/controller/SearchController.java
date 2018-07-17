@@ -16,7 +16,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/search")
-@CrossOrigin
 public class SearchController {
     @Autowired
     private SearchService searchService;

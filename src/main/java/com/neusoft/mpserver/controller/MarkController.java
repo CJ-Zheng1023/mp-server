@@ -21,7 +21,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/mark")
-@CrossOrigin
 public class MarkController {
     @Autowired
     private MarkService markService;

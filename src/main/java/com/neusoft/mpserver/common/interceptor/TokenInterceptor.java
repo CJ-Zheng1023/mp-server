@@ -37,7 +37,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             map.put("error",Constant.NO_LOGIN);
             Gson gson = new Gson();
             String resultStr = gson.toJson(map);
-            response.sendError(HttpStatus.FORBIDDEN.value(), resultStr);
+            response.getWriter().write(resultStr);
             return false;
         } else {
             request.setAttribute(Constant.USER_ID, tokenDomain.getUserId());
