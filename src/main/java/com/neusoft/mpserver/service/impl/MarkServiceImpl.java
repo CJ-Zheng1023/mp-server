@@ -29,7 +29,6 @@ public class MarkServiceImpl implements MarkService {
     public boolean addMark(String userId, List<Mark> markList) {
         List<Mark> markListResult = markList;
         for (int i = 0; i < markListResult.size(); i++) {
-            markListResult.get(i).setUserId(userId);
             markListResult.get(i).setId(IDGenerator.generate());
             Date day = new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
