@@ -27,6 +27,7 @@ public class WebAppConfigurer implements WebMvcConfigurer {
         List<String> urls = new ArrayList<String>();
         urls.add("/mark/**");
         urls.add("/search/**");
+        urls.add("/user/logout");
         registry.addInterceptor(getTokenInterceptor()).addPathPatterns(urls);
         //跨域拦截
         /*List<String> orinigUrls=new ArrayList<String>();
