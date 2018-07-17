@@ -6,6 +6,7 @@ import com.neusoft.mpserver.domain.Constant;
 import com.neusoft.mpserver.domain.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +37,7 @@ public class TokenInterceptor implements HandlerInterceptor{
             map.put("error",Constant.NO_LOGIN);
             Gson gson = new Gson();
             String resultStr = gson.toJson(map);
-            response.getWriter().write(resultStr);
+            response.sendError(HttpStatus.FORBIDDEN.value(), resultStr);
             return false;
         } else {
             request.setAttribute(Constant.USER_ID, tokenDomain.getUserId());
