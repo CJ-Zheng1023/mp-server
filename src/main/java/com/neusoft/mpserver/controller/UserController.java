@@ -1,5 +1,6 @@
 package com.neusoft.mpserver.controller;
 
+import com.neusoft.mpserver.domain.Constant;
 import com.neusoft.mpserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +58,7 @@ public class UserController {
      */
     @PostMapping("/logout")
     public boolean logout(HttpServletRequest request) {
-        String userId = (String) request.getAttribute("userId");
+        String userId = (String) request.getAttribute(Constant.USER_ID);
         return userService.logout(userId);
     }
 
