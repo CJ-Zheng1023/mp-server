@@ -23,6 +23,16 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 当token失效时转发到该路由
+     * @return
+     */
+    @GetMapping("/nologin")
+    public Map<String, String> noLogin(){
+        Map<String, String> result = new HashMap<String, String>();
+        result.put("error", Constant.NO_LOGIN);
+        return result;
+    }
+    /**
      * 注册
      *
      * @return
