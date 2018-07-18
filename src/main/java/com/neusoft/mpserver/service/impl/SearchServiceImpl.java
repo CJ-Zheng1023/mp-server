@@ -5,16 +5,14 @@ import com.neusoft.mpserver.common.domain.Pagination;
 import com.neusoft.mpserver.common.domain.Record;
 import com.neusoft.mpserver.common.domain.TrsResult;
 import com.neusoft.mpserver.common.engine.TrsEngine;
+import com.neusoft.mpserver.dao.MarkRerpository;
 import com.neusoft.mpserver.domain.Constant;
 import com.neusoft.mpserver.domain.Patent;
 import com.neusoft.mpserver.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * ic业务查询模块：service层实现
@@ -26,11 +24,13 @@ import java.util.Map;
 public class SearchServiceImpl implements SearchService {
     @Autowired
     private TrsEngine trsEngine;
-
+    @Autowired
+    private MarkRerpository markRerpository;
     @Override
     public Map<String, Object> searchPatentList(String ipc, Pagination pagination) {
         Map<String, Object> map = new HashMap<String, Object>();
         List<Map<String, String>> patentList = null;
+        List markAn=null;
         Condition condition = new Condition();
         String searchIc = "IPC_MAIN='" + ipc + "'";
         condition.setExp(searchIc);
@@ -42,14 +42,31 @@ public class SearchServiceImpl implements SearchService {
         int size = recordList.size();
         if (size > 0) {
             patentList = new ArrayList<Map<String, String>>();
+            String resultAn="";
+
             for (int i = 0; i < size; i++) {
-                patentList.add(AssembleData(recordList.get(i).getDataMap()));
+                Map<String, String> assembleData=AssembleData(recordList.get(i).getDataMap());
+                String an=assembleData.get("NRD_AN");
+                if(i== size-1){
+                    resultAn +=an;
+                }else{
+                    resultAn +=an+",";
+                }
+                List anList=markRerpository.matchMarkByAn(Arrays.asList(resultAn.split(",")));
+                if(anList.contains(an)){
+                    assembleData.put("marked","true");
+                }else{
+                    assembleData.put("marked","false");
+                }
+                patentList.add(assembleData);
             }
         }
         map.put("patentList", patentList);
         map.put("pagination", tr.getPagination());
+        System.out.println("okokokllalalalalallala!!!!!!!!!!!!!!!!!!!"+map);
         return map;
     }
+
 
     /**
      * 默认取GK（公开）字段数据，若为空，则取SQ（授权）字段数据

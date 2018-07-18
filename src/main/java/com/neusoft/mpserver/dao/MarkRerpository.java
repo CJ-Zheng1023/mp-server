@@ -3,6 +3,8 @@ import com.neusoft.mpserver.domain.Mark;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 /**
  * mark操作数据库层
@@ -23,4 +25,7 @@ public interface MarkRerpository  extends JpaRepository<Mark,String> {
     @Modifying
     @Query(value="delete from Mark where id=?1 and userId=?2")
     public void  deleteMarkByIdAndUserId(String id,String userId);
+
+    @Query(value="select distinct(an) from Mark where an in (?1)")
+    public List  matchMarkByAn (List<String> AList);
 }
