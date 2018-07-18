@@ -55,9 +55,10 @@ public class TrsEngineImpl implements TrsEngine {
     public TrsResult search(Condition condition) {
         TRSConnection conn = null;
         TrsResult rs = new TrsResult();
+        TRSResultSet result = null;
         try{
             conn = createConnection();
-            TRSResultSet result = TRSSearch.executeSelect(conn, condition.getDbName(), condition.getExp(),
+            result = TRSSearch.executeSelect(conn, condition.getDbName(), condition.getExp(),
                     "", "", "BI", TRSConstant.TCM_IDEOSINGLE | TRSConstant.TCM_LIFOSPARE, TRSConstant.TCE_NOTHIT, false);
             result.setReadOption("READOPTION", null, TRSConstant.TCM_BAN64KFILE);
             result.setCutSize(0, true);
@@ -80,8 +81,8 @@ public class TrsEngineImpl implements TrsEngine {
                 if (pageSize-- > 0) {
                     Record record = new Record();
                     for (String f : fields) {
-                        String r = result.getString(f);
-                        TRSSearch.dealTRSRSString(r);
+                        String r = result.getString(f, "red");
+                        r = TRSSearch.dealTRSRSString(r);
                         record.getDataMap().put(f, r);
                     }
                     rs.getRecords().add(record);
@@ -92,6 +93,7 @@ public class TrsEngineImpl implements TrsEngine {
         }catch(Exception e){
             throw new SystemException();
         }finally {
+            result.close();
             closeConnection(conn);
         }
         return rs;

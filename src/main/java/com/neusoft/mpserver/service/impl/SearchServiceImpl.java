@@ -63,7 +63,6 @@ public class SearchServiceImpl implements SearchService {
         }
         map.put("patentList", patentList);
         map.put("pagination", tr.getPagination());
-        System.out.println("okokokllalalalalallala!!!!!!!!!!!!!!!!!!!"+map);
         return map;
     }
 
